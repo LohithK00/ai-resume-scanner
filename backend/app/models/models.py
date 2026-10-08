@@ -36,6 +36,7 @@ class Resume(Base):
     job_id: Mapped[int] = mapped_column(ForeignKey("jobs.id"), nullable=False)
     candidate_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), nullable=True)
     filename: Mapped[str] = mapped_column(String(255), nullable=False)
+    file_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
     name: Mapped[str] = mapped_column(String(200), default="Unknown Candidate")
     email: Mapped[str | None] = mapped_column(String(255), nullable=True)
     phone: Mapped[str | None] = mapped_column(String(50), nullable=True)

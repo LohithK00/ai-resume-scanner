@@ -18,6 +18,8 @@ def upgrade_existing_schema():
             conn.execute(text("ALTER TABLE jobs ADD COLUMN created_by INTEGER"))
         if "candidate_id" not in resume_cols:
             conn.execute(text("ALTER TABLE resumes ADD COLUMN candidate_id INTEGER"))
+        if "file_path" not in resume_cols:
+            conn.execute(text("ALTER TABLE resumes ADD COLUMN file_path VARCHAR(500)"))
 
 upgrade_existing_schema()
 app = FastAPI(title=settings.app_name, version="2.0.0", description="AI-powered two-portal resume screening and candidate application platform")
